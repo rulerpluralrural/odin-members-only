@@ -11,18 +11,20 @@ const app = express();
 // Routers
 const indexRouter = require('./routes/index.js')
 const authRouter = require('./routes/auth.js')
+const messageRouter = require('./routes/message.js')
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use("/only-fams", indexRouter);
+app.use("/", indexRouter);
 app.use("/only-fams", authRouter)
+app.use("/only-fams", messageRouter)
 
 // Error Handlers
 
