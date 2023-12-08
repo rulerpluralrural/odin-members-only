@@ -1,11 +1,10 @@
 {
   "name": "odin-members-only",
   "version": "1.0.0",
-  "type": "module",
   "description": "A backend project for TheOdinProject part of learning NodeJS, ExpressJS, MongoDB and to learn authentication and authorization",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "Gerald Javier",
