@@ -6,6 +6,7 @@ const UserSchema = new Schema({
 		type: String,
 		required: [true, "Name should not be empty"],
 		trim: true,
+		unique: true,
 		minLength: 1,
 		maxLength: 50,
 	},

@@ -212,22 +212,22 @@ navbar .navbar-nav {
 
 .sidebar {
 	border-right: 1px solid var(--blue-500);
-	padding-block: 1rem;
+	padding-top: 1rem;
 }
 
 .sidebar-nav {
 	display: flex;
 	flex-direction: column;
-    align-items: flex-start;
+	align-items: flex-start;
 	gap: 0.7rem;
 }
 
 .sidebar-list {
-    width: 100%;
+	width: 100%;
 	padding: 0.7rem;
 	display: inline-block;
 	position: relative;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .sidebar-list::after {
@@ -250,9 +250,86 @@ navbar .navbar-nav {
 
 .sidebar-list i {
 	font-size: 1.3rem;
-    margin-right: 1rem;
+	margin-right: 1rem;
 }
 
 .sidebar-list a {
 	width: 150px;
+}
+
+section {
+	padding: 1rem;
+}
+
+/* Sign up page styling */
+
+.sign-up-container {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.sign-up-header {
+	margin-block: 3rem 2rem;
+}
+
+.sign-up-header * {
+	font-size: 2.8rem;
+}
+
+.sign-up-container form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	text-align: left;
+	height: 500px;
+	width: 600px;
+	padding: 1.5rem;
+	background-color: var(--light-100);
+	border: 2px solid var(--gray-300);
+	border-radius: 3px;
+}
+
+form h1 {
+	font-size: 2.4rem;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.form-group label {
+	font-size: 1.3rem;
+	letter-spacing: 0.1px;
+}
+
+.form-control {
+	width: 100%;
+	padding: 0.4rem 0.8rem;
+	height: 50px;
+	font-size: 1rem;
+	border-radius: 3px;
+	border: none;
+}
+
+input.form-control {
+	background-color: var(--gray-100);
+	color: var(--dark-200);
+}
+
+button.form-control {
+	margin-top: 1rem;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.3rem;
+	background-color: var(--blue-200);
+    color: var(--light-100);
+	transition: var(--transition-clr);
+}
+
+button.form-control:hover {
+	background-color: var(--blue-300);
 }

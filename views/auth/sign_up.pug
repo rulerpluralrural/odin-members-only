@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		script(
+			src="https://kit.fontawesome.com/91f7703251.js",
+			crossorigin="anonymous"
+		)
+		link(rel="stylesheet", href="/stylesheets/style.css")
+		title= title
+	body
+		.sign-up-container
+			.sign-up-header
+				a.logo(href="/only-fams") 
+					i.fa-solid.fa-people-group
+					h1 ONLY FAMS
+			form#sign-up-form(action="", method="POST") 
+				h1 #{ title }:
+				.form-group
+					label(for="username") Username:
+					input#username.form-control(
+						type="text",
+						name="username",
+						required="true",
+						placeholder="Enter your username"
+					)
+				.form-group
+					label(for="password") Password:
+					input#password.form-control(
+						type="password",
+						name="password",
+						required="true",
+						placeholder="Enter your password"
+					)
+				.form-group
+					label(for="email") Email:
+					input#email.form-control(
+						type="text",
+						name="email",
+						required="true",
+						placeholder="Enter your email address"
+					)
+				button.form-control(type="submit") Submit
