@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--font-header: "League Spartan", sans-serif;
+	--font-body: "Libre Baskerville", serif;
+	--light-100: #ffffff;
+	--light-200: #fffcee;
+	--light-300: #fff9da;
+	--dark-100: #000000;
+	--dark-200: #17160d;
+	--dark-300: #2f2c1a;
+	--gray-100: #e5e4e2;
+	--gray-200: #c0c0c0;
+	--gray-300: #848884;
+	--gray-400: #71797e;
+	--gray-500: #808080;
+	--red-100: #ff0000;
+	--red-200: #e70303;
+	--red-300: #7b1818;
+	--red-400: #800000;
+	--red-500: #880808;
+	--blue-100: #89cff0;
+	--blue-200: #0096ff;
+	--blue-300: #0182df;
+	--blue-400: #00008b;
+	--blue-500: #191970;
+	--green-100: #98fb98;
+	--green-200: #90ee90;
+	--green-300: #0fff50;
+	--green-400: #228b22;
+	--green-500: #008000;
+	--transition-clr: background-color 180ms ease-in;
+	--transition-ease-out: transform 0.25s ease-out;
+}
+
+body {
+	font-family: var(--font-body);
+	background-color: var(--light-100);
+	color: var(--dark-200);
+	letter-spacing: 0.3px;
+	text-align: left;
+}
+
+i {
+	font-size: 2.3rem;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: var(--dark-200);
+}
+
+h1 {
+	font-family: var(--font-header);
+	font-size: 2rem;
+}
+
+button {
+	border: none;
+	border-radius: 5px;
+	width: 200px;
+	cursor: pointer;
+	padding: 0.5rem 0.3rem;
+	font-size: 0.975rem;
+	font-weight: bold;
+	font-family: var(--font-body);
+}
+
+.container {
+	padding-inline: 7rem;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	padding-block: 1.5rem;
+	background-color: var(--dark-200);
+	color: var(--light-300);
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 1rem;
+	color: inherit;
+	padding-inline: 1rem;
+}
+
+navbar {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.search-bar {
+	position: relative;
+}
+
+.search-bar i {
+	position: absolute;
+	font-size: 1.3rem;
+	top: 20%;
+	left: 3%;
+	color: var(--gray-300);
+}
+
+.search-bar input {
+	padding: 0.6rem 0.7rem 0.6rem 2rem;
+	font-size: 0.9rem;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid var(--gray-400);
+	font-family: var(--font-body);
+}
+
+navbar .navbar-nav {
+	display: flex;
+	justify-content: space-around;
+	width: 250px;
+	letter-spacing: 0.1px;
+}
+
+.navbar-nav a {
+	font-family: var(--font-header);
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.login a,
+.register a {
+	border-radius: 5px;
+	padding: 0.7rem 0.8rem;
+	color: var(--light-300);
+}
+
+.login a {
+	background-color: var(--blue-200);
+}
+
+.login a:hover,
+.login a:focus {
+	background-color: var(--blue-300);
+	transition: var(--transition-clr);
+}
+
+.register a {
+	background-color: var(--red-100);
+	transition: var(--transition-clr);
+}
+
+.register a:hover,
+.register a:focus {
+	background-color: var(--red-200);
+}
+
+.header {
+	width: 100%;
+	padding-block: 1rem;
+	background-color: var(--blue-100);
+}
+
+.header-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.8rem;
+}
+
+.header-title i {
+	font-size: 1.7rem;
+	padding-bottom: 0.7rem;
+}
+
+.header p,
+.header button {
+	margin-left: 3.5rem;
+}
+
+.header button {
+	margin-top: 0.5rem;
+	background-color: var(--red-100);
+	color: var(--light-200);
+	transition: var(--transition-clr);
+}
+
+.header button:hover {
+	background-color: var(--red-200);
+}
+
+.content-container {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	flex: 1;
+}
+
+.sidebar {
+	border-right: 1px solid var(--blue-500);
+	padding-block: 1rem;
+}
+
+.sidebar-nav {
+	display: flex;
+	flex-direction: column;
+    align-items: flex-start;
+	gap: 0.7rem;
+}
+
+.sidebar-list {
+    width: 100%;
+	padding: 0.7rem;
+	display: inline-block;
+	position: relative;
+    cursor: pointer;
+}
+
+.sidebar-list::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--dark-200);
+	transform-origin: bottom right;
+	transition: var(--transition-ease-out);
+}
+
+.sidebar-list:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.sidebar-list i {
+	font-size: 1.3rem;
+    margin-right: 1rem;
+}
+
+.sidebar-list a {
+	width: 150px;
+}

@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		script(
+			src="https://kit.fontawesome.com/91f7703251.js",
+			crossorigin="anonymous"
+		)
+		link(rel="stylesheet", href="/stylesheets/style.css")
+		title Only Fams
+	body
+		.container
+			.nav-container
+				a.logo(href="#") 
+					i.fa-solid.fa-people-group
+					h1 ONLY FAMS
+				navbar
+					.search-bar
+						i.fa-solid.fa-magnifying-glass
+						input(type="search", placeholder="Search the community")
+					.navbar-nav
+						.login
+							a(href="#") LOGIN
+						.register
+							a(href="#") SIGN-UP
+			.header
+				.header-title
+					i.fa-solid.fa-comments
+					h1 General Discussion
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis facilis provident itaque cumque eveniet iure sed tempora at.
+				button(type="button") Create a message
+			.content-container
+				.sidebar
+					.sidebar-nav
+						.sidebar-list
+							i.fa-solid.fa-star
+							a(href="#") Join Membership
+						.sidebar-list
+							i.fa-solid.fa-tags
+							a(href="#") Tags
+						.sidebar-list
+							i.fa-solid.fa-bullhorn
+							a(href="#") Announcements
+						.sidebar-list
+							i.fa-solid.fa-wrench
+							a(href="#") Updates
+						.sidebar-list
+							i.fa-solid.fa-comments
+							a(href="#") All Discussions
+						.sidebar-list
+							i.fa-regular.fa-lightbulb
+							a(href="#") Contribute
+						.sidebar-list
+							i.fa-regular.fa-circle-question
+							a(href="#") Help/Support
+				block content

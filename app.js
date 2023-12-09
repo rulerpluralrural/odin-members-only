@@ -3,15 +3,16 @@ const expressSession = require("express-session");
 const passport = require("passport");
 const connectDB = require("./config/db.js");
 const path = require("path");
+const errorHandler = require("./middleware/error-handler");
 
 require("dotenv").config();
 
 const app = express();
 
 // Routers
-const indexRouter = require('./routes/index.js')
-const authRouter = require('./routes/auth.js')
-const messageRouter = require('./routes/message.js')
+const indexRouter = require("./routes/index.js");
+const authRouter = require("./routes/auth.js");
+const messageRouter = require("./routes/message.js");
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -23,10 +24,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", indexRouter);
-app.use("/only-fams", authRouter)
-app.use("/only-fams", messageRouter)
+app.use("/only-fams", authRouter);
+app.use("/only-fams", messageRouter);
 
 // Error Handlers
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8000;
 
