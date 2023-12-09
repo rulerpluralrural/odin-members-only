@@ -2,6 +2,7 @@ const Message = require("../models/message");
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 exports.login_get = (req, res) => {
 	res.send("Login GET");
@@ -38,28 +39,37 @@ exports.sign_up_post = [
 		.isEmail()
 		.withMessage("Email is not valid"),
 
-	asyncHandler(async (req, res) => {
+	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
-
-		// Create new user with sanitized data
-		const user = new User({
-			username: req.body.username,
-			password: req.body.password,
-			email: req.body.email,
-		});
 
 		if (!errors.isEmpty()) {
 			// If there are errors.
 			res.render("auth/sign_up", {
 				title: "Sign up",
-				user: user,
 				errors: errors.array(),
 			});
 		} else {
-			// If data form is valid
-			await user.save();
-			// Redirect to home page
-			res.redirect("/only-fams");
+			bcrypt.genSalt(10, function (err, salt) {
+				bcrypt.hash("B4c0//", salt, async function (err, hashedPassword) {
+					if (err) {
+						return next(err);
+					} else {
+						// Store hash in your password DB.
+						const user = new User({
+							username: req.body.username,
+							password: hashedPassword,
+							email: req.body.email,
+						});
+						await user.save();
+						// Redirect to home page
+						res.render("auth/sign_up", {
+							title: "Sign up",
+							errors: [],
+							success_msg: "Sign up successfull!",
+						});
+					}
+				});
+			});
 		}
 	}),
 ];
