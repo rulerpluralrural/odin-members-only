@@ -1,33 +1,43 @@
-const Message = require("../models/message");
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
-const { validationResult, check } = require("express-validator");
+const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 // Display login form on Get
-exports.login_get = (req, res) => {
+exports.login_get = asyncHandler(async (req, res) => {
 	res.render("auth/login", {
 		title: "Login",
 	});
-};
+});
 
-exports.login_post = (req, res) => {
-	res.send("Login POST");
-};
+// Handle login form on POST
+exports.login_post = asyncHandler(async (req, res) => {
+	passport.authenticate("local", {
+		successRedirect: "/",
+		failureRedirect: "/only-fams/login",
+	});
+	console.log(req.user);
+});
+
+exports.log_out = asyncHandler(async (req, res) => {
+	res.redirect("/");
+});
 
 // Display sign up form on GET
-exports.sign_up_get = (req, res) => {
+exports.sign_up_get = asyncHandler(async (req, res) => {
 	res.render("auth/sign_up", {
 		title: "Sign up",
 	});
-};
+});
 
 // Handle sign up form on POST
 exports.sign_up_post = [
-	//Validate and sanitize fields
+	// Validate and sanitize fields
 	check("username")
 		.trim()
 		.isLength({ min: 1 })
+		.escape()
 		.withMessage("Username is required")
 		.custom(async (value) => {
 			const user = await User.findOne({ username: value });
@@ -90,7 +100,8 @@ exports.sign_up_post = [
 						res.render("auth/sign_up", {
 							title: "Sign up",
 							errors: [],
-							success_msg: "Sign up successfull! You can now log in to Only Fams.",
+							success_msg:
+								"Sign up successfull! You can now log in to Only Fams.",
 						});
 					}
 				});
