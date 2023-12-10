@@ -1,7 +1,7 @@
 const Message = require("../models/message");
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
-const { body, validationResult } = require("express-validator");
+const { validationResult, check } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 exports.login_get = (req, res) => {
@@ -22,25 +22,47 @@ exports.sign_up_get = (req, res) => {
 // Handle sign up form on POST
 exports.sign_up_post = [
 	//Validate and sanitize fields
-	body("username")
+	check("username")
 		.trim()
 		.isLength({ min: 1 })
-		.escape()
-		.withMessage("Username is required"),
-	body("password")
+		.withMessage("Username is required")
+		.custom(async (value) => {
+			const user = await User.findOne({ username: value });
+			if (user) {
+				throw new Error(
+					"Username already in use, Please choose a different one",
+				);
+			}
+		}),
+	check("password")
 		.trim()
-		.isLength({ min: 1 })
-		.escape()
-		.withMessage("Password is required"),
-	body("email")
+		.isLength({ min: 5 })
+		.withMessage("Password is required and must be at least 5 characters long")
+		.isLength({ max: 20 })
+		.withMessage("Password must not be over 20 characters long"),
+	check("confirm-password").custom(async (value, { req }) => {
+		if (value !== req.body.password) {
+			throw new Error("Password confirmation does not match password");
+		}
+	}),
+	check("email")
 		.trim()
 		.isLength({ min: 1 })
 		.withMessage("Email is required")
+		.custom(async (value) => {
+			const email = await User.findOne({ email: value });
+			if (email) {
+				throw new Error(
+					"E-mail is not available, Please choose a different one.",
+				);
+			}
+		})
 		.isEmail()
 		.withMessage("Email is not valid"),
 
 	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
+		console.log(errors);
 
 		if (!errors.isEmpty()) {
 			// If there are errors.
@@ -65,7 +87,7 @@ exports.sign_up_post = [
 						res.render("auth/sign_up", {
 							title: "Sign up",
 							errors: [],
-							success_msg: "Sign up successfull!",
+							success_msg: "Sign up successfull! You can now log in to Only Fams.",
 						});
 					}
 				});
