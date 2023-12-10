@@ -40,24 +40,8 @@ html(lang="en")
 						required="true",
 						placeholder="Enter your password"
 					)
-				.form-group
-					label(for="confirm-password") Confirm Password:
-					input#confirm-password.form-control(
-						type="password",
-						name="confirm-password",
-						required="true",
-						placeholder="Confirm your password"
-					)
-				.form-group
-					label(for="email") Email:
-					input#email.form-control(
-						type="text",
-						name="email",
-						required="true",
-						placeholder="Enter your email address"
-					)
 				button.form-control(type="submit") Submit
-				p Already have an account?
+				p Don't have an account yet?
 					|
-					a(href="/only-fams/login") Login
+					a(href="/only-fams/sign-up") Sign-up
 				p.text-success #{ success_msg }

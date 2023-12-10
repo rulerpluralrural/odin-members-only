@@ -4,8 +4,11 @@ const asyncHandler = require("express-async-handler");
 const { validationResult, check } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
+// Display login form on Get
 exports.login_get = (req, res) => {
-	res.send("Login GET");
+	res.render("auth/login", {
+		title: "Login",
+	});
 };
 
 exports.login_post = (req, res) => {
