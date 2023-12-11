@@ -12,7 +12,7 @@ html(lang="en")
 	body
 		.container
 			.nav-container
-				a.logo(href="/only-fams") 
+				a.logo(href="/") 
 					i.fa-solid.fa-people-group
 					h1 ONLY FAMS
 				navbar
@@ -33,7 +33,9 @@ html(lang="en")
 					i.fa-solid.fa-comments
 					h1 General Discussion
 				p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis facilis provident itaque cumque eveniet iure sed tempora at.
-				button(type="button") Create a message
+				button(type="button")
+					|
+					a(href="/only-fams") Create a message
 			.content-container
 				.sidebar
 					.sidebar-nav

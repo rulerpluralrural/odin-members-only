@@ -17,9 +17,7 @@ require("dotenv").config();
 const app = express();
 
 // Routers
-const indexRouter = require("./routes/index.js");
-const authRouter = require("./routes/auth.js");
-const messageRouter = require("./routes/message.js");
+const homeRouter = require("./routes/index.js");
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -81,9 +79,10 @@ passport.deserializeUser((userId, done) => {
 });
 
 // Routes
-app.use("/", indexRouter);
-app.use("/only-fams", authRouter);
-app.use("/only-fams", messageRouter);
+app.get("/", (req, res) => {
+	res.redirect("/only-fams")
+})
+app.use("/only-fams", homeRouter);
 
 // Error Handlers
 app.use(errorHandler);

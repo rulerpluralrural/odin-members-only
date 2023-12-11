@@ -16,6 +16,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 	});
 });
 
+exports.message_get = (req, res) => {
+	res.send("Get a message");
+};
+
 exports.message_post = (req, res) => {
 	res.send("Post a message");
 };
