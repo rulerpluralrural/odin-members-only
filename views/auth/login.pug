@@ -16,11 +16,11 @@ html(lang="en")
 					i.fa-solid.fa-people-group
 					h1 ONLY FAMS
 
-			if (errors && errors === [])
+			if (messages)
 				.errors-container
 					ul
-						each error in errors
-							li!= error.msg
+						each message in messages
+							li!= message
 
 			form#auth-form(action="", method="POST") 
 				h1 #{ title }

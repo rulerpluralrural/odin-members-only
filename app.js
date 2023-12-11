@@ -54,7 +54,6 @@ passport.use(
 			if (!user) return done(null, false, { message: "Username not found" });
 
 			bcrypt.compare(password, user.password, (err, res) => {
-				console.log(err)
 				if (res) {
 					return done(null, user);
 				} else {
@@ -62,8 +61,7 @@ passport.use(
 				}
 			});
 		} catch (error) {
-			console.log(error)
-			if (err) return done(err);
+			return done(error);
 		}
 	}),
 );

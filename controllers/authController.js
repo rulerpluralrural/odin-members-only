@@ -6,8 +6,10 @@ const passport = require("passport");
 
 // Display login form on Get
 exports.login_get = asyncHandler(async (req, res) => {
+	console.log(req.session);
 	res.render("auth/login", {
 		title: "Login",
+		messages: req.session.messages,
 	});
 });
 
@@ -15,6 +17,7 @@ exports.login_get = asyncHandler(async (req, res) => {
 exports.login_post = passport.authenticate("local", {
 	successRedirect: "/",
 	failureRedirect: "/only-fams/login",
+	failureMessage: true,
 });
 
 exports.log_out = asyncHandler(async (req, res) => {
@@ -82,26 +85,30 @@ exports.sign_up_post = [
 			});
 		} else {
 			bcrypt.genSalt(10, function (err, salt) {
-				bcrypt.hash(req.body.password, salt, async function (err, hashedPassword) {
-					if (err) {
-						return next(err);
-					} else {
-						// Store hash in your password DB.
-						const user = new User({
-							username: req.body.username,
-							password: hashedPassword,
-							email: req.body.email,
-						});
-						await user.save();
-						// Redirect to home page
-						res.render("auth/sign_up", {
-							title: "Sign up",
-							errors: [],
-							success_msg:
-								"Sign up successfull! You can now log in to Only Fams.",
-						});
-					}
-				});
+				bcrypt.hash(
+					req.body.password,
+					salt,
+					async function (err, hashedPassword) {
+						if (err) {
+							return next(err);
+						} else {
+							// Store hash in your password DB.
+							const user = new User({
+								username: req.body.username,
+								password: hashedPassword,
+								email: req.body.email,
+							});
+							await user.save();
+							// Redirect to home page
+							res.render("auth/sign_up", {
+								title: "Sign up",
+								errors: [],
+								success_msg:
+									"Sign up successfull! You can now log in to Only Fams.",
+							});
+						}
+					},
+				);
 			});
 		}
 	}),
