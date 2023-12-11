@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 // Authentication
 const passport = require("passport");
 const session = require("express-session");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const User = require("./models/user");
 
@@ -47,24 +47,29 @@ app.use(passport.session());
 
 // Passport JS
 passport.use(
-	new LocalStrategy((username, password, done) => {
-		User.findOne({ username: username}, (err, user) => {
-			if (err) return done(err);
+	new LocalStrategy(async (username, password, done) => {
+		try {
+			const user = await User.findOne({ username: username });
 
 			if (!user) return done(null, false, { message: "Username not found" });
 
 			bcrypt.compare(password, user.password, (err, res) => {
+				console.log(err)
 				if (res) {
 					return done(null, user);
 				} else {
 					return done(null, false, { message: "Invalid password" });
 				}
 			});
-		});
+		} catch (error) {
+			console.log(error)
+			if (err) return done(err);
+		}
 	}),
 );
 
 passport.serializeUser((user, done) => {
+	console.log(user);
 	done(null, user.id);
 });
 

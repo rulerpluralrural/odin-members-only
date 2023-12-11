@@ -1,12 +1,11 @@
 extends layout
 block content
-	section 
+	section
 		if (user)
-			ul
-				each user in users 
-					li #{ user.username } 
-			ul
-				each item in messages 
-					li #{ item.message }
+			each user in users
+				.messages
+					.message-card
+						p #{ user.name } 
+						p #{ user.message }
 		else
 			h1 Log in first!

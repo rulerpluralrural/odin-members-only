@@ -12,12 +12,9 @@ exports.login_get = asyncHandler(async (req, res) => {
 });
 
 // Handle login form on POST
-exports.login_post = asyncHandler(async (req, res) => {
-	passport.authenticate("local", {
-		successRedirect: "/",
-		failureRedirect: "/only-fams/login",
-	});
-	console.log(req.user);
+exports.login_post = passport.authenticate("local", {
+	successRedirect: "/",
+	failureRedirect: "/only-fams/login",
 });
 
 exports.log_out = asyncHandler(async (req, res) => {
@@ -85,7 +82,7 @@ exports.sign_up_post = [
 			});
 		} else {
 			bcrypt.genSalt(10, function (err, salt) {
-				bcrypt.hash("B4c0//", salt, async function (err, hashedPassword) {
+				bcrypt.hash(req.body.password, salt, async function (err, hashedPassword) {
 					if (err) {
 						return next(err);
 					} else {
