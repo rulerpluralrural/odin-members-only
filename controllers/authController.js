@@ -6,7 +6,7 @@ const passport = require("passport");
 
 // Display login form on Get
 exports.login_get = asyncHandler(async (req, res) => {
-	console.log(req.session);
+	// console.log(req.user);
 	res.render("auth/login", {
 		title: "Login",
 		messages: req.session.messages,
@@ -21,7 +21,12 @@ exports.login_post = passport.authenticate("local", {
 });
 
 exports.log_out = asyncHandler(async (req, res) => {
-	res.redirect("/");
+	req.logout((err) => {
+		if (err) {
+			return next(err);
+		}
+		res.redirect("/");
+	});
 });
 
 // Display sign up form on GET

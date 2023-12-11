@@ -20,10 +20,14 @@ html(lang="en")
 						i.fa-solid.fa-magnifying-glass
 						input(type="search", placeholder="Search the community")
 					.navbar-nav
-						.login
-							a(href="/only-fams/login") LOGIN
-						.register
-							a(href="/only-fams/sign-up") SIGN-UP
+						if (user)
+							.logout
+								a(href="/only-fams/logout") LOGOUT
+						else 
+							.login
+								a(href="/only-fams/login") LOGIN
+							.register
+								a(href="/only-fams/sign-up") SIGN-UP
 			.header
 				.header-title
 					i.fa-solid.fa-comments
