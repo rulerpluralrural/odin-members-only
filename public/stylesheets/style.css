@@ -192,20 +192,42 @@ navbar .navbar-nav {
 	padding-bottom: 0.7rem;
 }
 
-.header p,
-.header button {
+.header p {
 	margin-left: 3.5rem;
 }
 
-.header button {
-	margin-top: 0.5rem;
-	background-color: var(--red-100);
-	color: var(--light-200);
-	transition: var(--transition-clr);
+.header-button-container {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
-.header button:hover {
+.header-button-container button {
+	margin-top: 0.5rem;
+	transition: var(--transition-clr);
+	padding-block: .3rem;
+}
+
+.header-button-container button a {
+	color: var(--light-200);
+}
+
+.membership-btn {
+	margin-left: 3.5rem;
 	background-color: var(--red-200);
+	color: var(--light-200);
+}
+
+.membership-btn:hover {
+	background-color: var(--red-300);
+}
+
+.message-btn {
+	background-color: var(--blue-200);
+}
+
+.message-btn:hover{
+	background-color: var(--blue-300);
 }
 
 .content-container {
