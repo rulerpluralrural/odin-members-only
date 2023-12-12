@@ -1,0 +1,28 @@
+extends ../layout
+block content
+	section
+		form(action="", method="POST") 
+			h1 Hello #{ user.username }!
+			.form-group
+				label(for="title") Title:
+				input#title.form-control(
+					name="title",
+					type="text",
+					placeholder="Type of your message title here...",
+					required="true"
+				)
+			.form-group
+				label(for="message") Leave a comment:
+				textarea#message.form-control(
+					name="message",
+					placeholder="Type your message here...",
+					required
+				) 
+			button.form-control(type="submit")
+				p Submit
+				
+		if (errors)
+			.errors-container
+				each error in errors 
+					ul
+						li!= error

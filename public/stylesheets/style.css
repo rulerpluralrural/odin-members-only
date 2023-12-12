@@ -205,7 +205,7 @@ navbar .navbar-nav {
 .header-button-container button {
 	margin-top: 0.5rem;
 	transition: var(--transition-clr);
-	padding-block: .3rem;
+	padding-block: 0.3rem;
 }
 
 .header-button-container button a {
@@ -226,7 +226,7 @@ navbar .navbar-nav {
 	background-color: var(--blue-200);
 }
 
-.message-btn:hover{
+.message-btn:hover {
 	background-color: var(--blue-300);
 }
 
@@ -340,9 +340,16 @@ form h1 {
 	border: none;
 }
 
-input.form-control {
+input.form-control,
+textarea.form-control {
 	background-color: var(--gray-100);
 	color: var(--dark-200);
+}
+
+textarea.form-control {
+	height: 150px;
+	border: 2px solid var(--gray-300);
+	margin-bottom: 1rem;
 }
 
 button.form-control {
@@ -385,4 +392,29 @@ form p {
 	list-style-position: inside;
 	font-weight: bold;
 	margin-bottom: 0.3rem;
+}
+
+/* Messages styling */
+
+.message-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: var(--gray-100);
+}
+
+.message-card-header,
+.message-card-contents {
+	padding: 0.5rem 0.7rem;
+}
+
+.message-card-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	background-color: var(--gray-200);
+}
+
+.message-card-contents {
+
 }

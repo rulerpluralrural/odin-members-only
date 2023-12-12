@@ -2,10 +2,15 @@ extends layout
 block content
 	section
 		if (user)
-			each user in users
+			each message in messages
 				.messages
 					.message-card
-						p #{ user.name } 
-						p #{ user.message }
+						.message-card-header
+							p #{ message.user.username } -
+							p #{ message.date_formatted }
+						.message-card-contents
+							p #{ message.title }
+							p - #{ message.message }
+
 		else
 			h1 Log in first!
