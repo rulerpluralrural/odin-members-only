@@ -1,0 +1,18 @@
+extends ../layout
+block content
+	section
+		if (user)
+			form.membership-form(action="", method="POST") 
+				h1 MEMBERSHIP PASSWORD
+				p THEODINPROJECT
+				.form-group
+					label(for="membership") Enter code here:
+					input#membership.form-control(
+						type="text",
+						name="membership",
+						required="true",
+						placeholder="Enter the membership password here"
+					)
+				button.form-control(type="submit") Submit
+		else
+			p #[strong You need to log in first to view this!]

@@ -471,3 +471,34 @@ form p {
 	border-radius: 3px;
 	margin-left: .2rem;
 }
+
+/* Membership page styling */
+
+.membership-form {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.membership-form h1 {
+	font-size: 1.7rem;
+	padding: .5rem .4rem;
+}
+
+.membership-form p {
+	width: 50%;
+	font-size: 1rem;
+	font-style: italic;
+	border: 1px solid var(--dark-200);
+	border-radius: 3px;
+	align-self: center;
+	padding: .3rem .4rem;
+}
+
+.membership-form label {
+	text-align: left;
+}
+
+.membership-form .form-group input {
+	margin-bottom: 1rem;
+}

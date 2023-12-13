@@ -118,3 +118,14 @@ exports.sign_up_post = [
 		}
 	}),
 ];
+
+exports.member_get = asyncHandler(async (req, res) => {
+	res.render("auth/membership", {
+		title: "Only Fams",
+		user: req.user,
+	});
+});
+
+exports.member_post = asyncHandler(async (req, res) => {
+	res.send("Membership POST");
+});

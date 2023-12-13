@@ -3,7 +3,7 @@ const router = express.Router();
 
 const authController = require("../controllers/authController");
 
-// Get request for login
+// GET request for login
 router.get("/login", authController.login_get);
 
 // POST request for login
@@ -15,8 +15,14 @@ router.get("/logout", authController.log_out)
 // Get request for sign-up
 router.get("/sign-up", authController.sign_up_get);
 
-//Post request for sign-up
+// POST request for sign-up
 router.post("/sign-up", authController.sign_up_post);
+
+// GET request for membership
+router.get("/membership", authController.member_get);
+
+// PSOT request for membership
+router.post("/membership", authController.member_post)
 
 
 module.exports = router;
