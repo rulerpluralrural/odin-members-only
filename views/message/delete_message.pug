@@ -1,0 +1,15 @@
+extends ../layout
+block content
+	section
+		p Do you really want to delete this Book?
+			if (message)
+				form(method="POST", action="")
+					.form-group
+						input#book_id.form-control(
+							type="hidden",
+							name="book_id",
+							required="true",
+							value=book._id
+						)
+
+					button.btn.btn-primary(type="submit") Delete

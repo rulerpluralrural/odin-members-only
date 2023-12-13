@@ -143,34 +143,30 @@ navbar .navbar-nav {
 	font-weight: bold;
 }
 
-.login a,
-.register a,
-.logout a {
+.log a,
+.home a {
 	border-radius: 5px;
 	padding: 0.7rem 0.8rem;
 	color: var(--light-300);
 }
 
-.login a,
-.logout a {
+.log a {
 	background-color: var(--blue-200);
 }
 
-.login a:hover,
-.login a:focus,
-.logout a:hover,
-.logout a:focus {
+.log a:hover,
+.log a:focus {
 	background-color: var(--blue-300);
 	transition: var(--transition-clr);
 }
 
-.register a {
+.home a {
 	background-color: var(--red-100);
 	transition: var(--transition-clr);
 }
 
-.register a:hover,
-.register a:focus {
+.home a:hover,
+.home a:focus {
 	background-color: var(--red-200);
 }
 
@@ -413,12 +409,35 @@ form p {
 .message-card-header {
 	display: flex;
 	align-items: center;
-	gap: .5rem;
+	justify-content: space-between;
 	background-color: var(--gray-200);
 	border-left: 4px solid var(--gray-400);
+	position: relative;
+}
+
+.message-card-header a {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	color: var(--red-400);
+}
+
+.message-card-header a:hover {
+	color: var(--red-200);
 }
 
 .message-card-header i {
+	font-size: 1.3rem;
+}
+
+.heading {
+	display: flex;
+	align-items: center;
+	gap: .3rem;
+	padding-block: .3rem;
+}
+
+.heading i {
 	font-size: 1.3rem;
 	border-radius: 50%;
 	border: 2px solid var(--dark-200);
@@ -474,18 +493,18 @@ form p {
 
 /* Membership page styling */
 
-.membership-form {
+.auth-form {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 }
 
-.membership-form h1 {
+.auth-form h1 {
 	font-size: 1.7rem;
 	padding: .5rem .4rem;
 }
 
-.membership-form .passcode {
+.auth-form .passcode {
 	width: 50%;
 	font-size: 1rem;
 	font-style: italic;
@@ -495,19 +514,19 @@ form p {
 	padding: .3rem .4rem;
 }
 
-.membership-form label {
+.auth-form label {
 	text-align: left;
 }
 
-.membership-form .form-group input {
+.auth-form .form-group input {
 	margin-bottom: 1rem;
 }
 
-.membership-form .text-success {
+.auth-form .text-success {
 	margin-top: 1rem;
 }
 
-.membership-form .errors-container {
+.auth-form .errors-container {
 	width: 100%;
 }
 

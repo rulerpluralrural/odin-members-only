@@ -16,9 +16,9 @@ html(lang="en")
 					i.fa-solid.fa-people-group
 					h1 ONLY FAMS
 
-			if (errors || errors === [])
-				.errors-container
-					ul
+			if (errors)
+				ul
+					.errors-container
 						each error in errors
 							li!= error.msg
 

@@ -1,21 +1,20 @@
 extends ../layout
-block content
-	section
+block content 
+	section 
 		if (user)
 			form.auth-form(action="", method="POST") 
-				h1 MEMBERSHIP PASSWORD
-				p.passcode THEODINPROJECT
 				.form-group
-					label(for="membership") Enter code here:
-					input#membership.form-control(
+					label(for="admin") Administrator:
+					input#admin.form-control(
 						type="password",
-						name="membership",
+						name="admin",
 						required="true",
-						placeholder="Enter the membership password here"
+						value="",
+						placeholder="Enter the admin password here"
 					)
 				button.form-control(type="submit") Submit
 				p.text-success #{ success_msg }
-				if (errors || errors === [])
+				if (errors)
 					.errors-container
 						ul
 							each error in errors 

@@ -25,7 +25,7 @@ exports.log_out = asyncHandler(async (req, res) => {
 		if (err) {
 			return next(err);
 		}
-		res.redirect("/");
+		res.redirect("/only-fams/login");
 	});
 });
 
@@ -80,7 +80,7 @@ exports.sign_up_post = [
 
 	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
-		console.log(errors);
+		console.log(errors.array());
 
 		if (!errors.isEmpty()) {
 			// If there are errors.
@@ -107,7 +107,6 @@ exports.sign_up_post = [
 							// Redirect to home page
 							res.render("auth/sign_up", {
 								title: "Sign up",
-								errors: [],
 								success_msg:
 									"Sign up successfull! You can now log in to Only Fams.",
 							});
@@ -156,6 +155,48 @@ exports.member_post = [
 				title: "Only Fams",
 				user: req.user,
 				success_msg: "Congratulations you are now a member!",
+			});
+		}
+	}),
+];
+
+exports.admin_get = asyncHandler(async (req, res) => {
+	res.render("auth/admin", {
+		title: "Only Fams",
+		user: req.user,
+	});
+});
+
+exports.admin_post = [
+	check("admin")
+		.trim()
+		.isLength({ min: 1 })
+		.withMessage("Passcode is required")
+		.custom(async (value, { req }) => {
+			if (value !== process.env.ADMIN_CODE) {
+				throw new Error("Wrong Passcode");
+			}
+			if (req.user.admin === true) {
+				throw new Error("Invalid request, You are an admin already!");
+			}
+		}),
+
+	asyncHandler(async (req, res) => {
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			res.render("auth/admin", {
+				title: "Only Fams",
+				user: req.user,
+				errors: errors.array(),
+			});
+			return;
+		} else {
+			await User.findByIdAndUpdate(req.user._id, { admin: true }, {});
+			res.render("auth/admin", {
+				title: "Only Fams",
+				user: req.user,
+				success_msg: "Congratulations you are now an administrator!",
 			});
 		}
 	}),

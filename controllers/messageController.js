@@ -65,3 +65,17 @@ exports.message_post = [
 		}
 	}),
 ];
+
+exports.delete_message_get = asyncHandler(async (req, res) => {
+	const message = await Message.findById(req.params.id).exec();
+
+	res.render("message/delete_message", {
+		title: "Only Fams",
+		message: message,
+		user: req.user,
+	});
+});
+
+exports.delete_message_post = asyncHandler(async (req, res) => {
+	res.send("POST Delete");
+});

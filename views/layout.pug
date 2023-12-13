@@ -21,12 +21,14 @@ html(lang="en")
 						input(type="search", placeholder="Search the community")
 					.navbar-nav
 						if (user)
-							.logout
+							.log
 								a(href="/only-fams/logout") LOGOUT
+							.home
+								a(href="/") HOME
 						else
-							.login
+							.log
 								a(href="/only-fams/login") LOGIN
-							.register
+							.home
 								a(href="/only-fams/sign-up") SIGN-UP
 
 			.header
@@ -45,7 +47,7 @@ html(lang="en")
 					.sidebar-nav
 						.sidebar-list
 							i.fa-solid.fa-star
-							a(href="#") Join Membership
+							a(href="/only-fams/membership") Join Membership
 						.sidebar-list
 							i.fa-solid.fa-tags
 							a(href="#") Tags

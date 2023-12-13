@@ -6,8 +6,12 @@ block content
 				each message in messages
 					.message-card
 						.message-card-header
-							i.fa-regular.fa-message
-							h4 #{ message.title }
+							.heading
+								i.fa-regular.fa-message
+								h4 #{ message.title }
+							if (user.admin)
+								a(href=message.url)
+									i.fa-solid.fa-xmark
 						.message-card-content
 							p #{ message.message }
 							.message-card-details
@@ -33,6 +37,7 @@ block content
 										p Posted on:
 											|
 											small.info Join Membership to see this
+
 
 			else
 				each message in messages

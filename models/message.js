@@ -28,4 +28,8 @@ MessageSchema.virtual("date_formatted").get(function () {
 	return DateTime.fromJSDate(this.createdAt).toLocaleString(DateTime.DATE_MED);
 });
 
+MessageSchema.virtual("url").get(function () {
+	return `/only-fams/message/${this._id}`;
+});
+
 module.exports = mongoose.model("Message", MessageSchema);
