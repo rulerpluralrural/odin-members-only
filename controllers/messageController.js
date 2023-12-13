@@ -69,6 +69,10 @@ exports.message_post = [
 exports.delete_message_get = asyncHandler(async (req, res) => {
 	const message = await Message.findById(req.params.id).exec();
 
+	if (message === null) {
+		res.redirect("/");
+	}
+
 	res.render("message/delete_message", {
 		title: "Only Fams",
 		message: message,
@@ -77,5 +81,6 @@ exports.delete_message_get = asyncHandler(async (req, res) => {
 });
 
 exports.delete_message_post = asyncHandler(async (req, res) => {
-	res.send("POST Delete");
+	await Message.findByIdAndDelete(req.body.message_id);
+	res.redirect("/");
 });

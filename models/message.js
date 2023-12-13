@@ -29,7 +29,7 @@ MessageSchema.virtual("date_formatted").get(function () {
 });
 
 MessageSchema.virtual("url").get(function () {
-	return `/only-fams/message/${this._id}`;
+	return `/only-fams/messages/${this._id}`;
 });
 
 module.exports = mongoose.model("Message", MessageSchema);

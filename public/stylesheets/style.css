@@ -534,3 +534,21 @@ section a {
 	color: var(--blue-400);
 	text-decoration: underline;
 }
+
+/* Delete form styling */
+.btn-delete {
+	background-color: var(--red-100);
+	color: var(--light-200);
+	padding: .5rem .7rem;
+	margin-top: .8rem;
+	transition: var(--transition-clr);
+}
+
+.delete-form p {
+	text-align: left;
+	margin-top: .7rem;
+}
+
+.btn-delete:hover {
+	background-color: var(--red-200);
+}
