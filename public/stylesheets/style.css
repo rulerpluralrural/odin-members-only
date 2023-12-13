@@ -485,7 +485,7 @@ form p {
 	padding: .5rem .4rem;
 }
 
-.membership-form p {
+.membership-form .passcode {
 	width: 50%;
 	font-size: 1rem;
 	font-style: italic;
@@ -501,4 +501,17 @@ form p {
 
 .membership-form .form-group input {
 	margin-bottom: 1rem;
+}
+
+.membership-form .text-success {
+	margin-top: 1rem;
+}
+
+.membership-form .errors-container {
+	width: 100%;
+}
+
+section a {
+	color: var(--blue-400);
+	text-decoration: underline;
 }

@@ -4,15 +4,23 @@ block content
 		if (user)
 			form.membership-form(action="", method="POST") 
 				h1 MEMBERSHIP PASSWORD
-				p THEODINPROJECT
+				p.passcode THEODINPROJECT
 				.form-group
 					label(for="membership") Enter code here:
 					input#membership.form-control(
-						type="text",
+						type="password",
 						name="membership",
 						required="true",
 						placeholder="Enter the membership password here"
 					)
 				button.form-control(type="submit") Submit
+				p.text-success #{ success_msg }
+				if (errors || errors === [])
+					.errors-container
+						ul
+							each error in errors 
+								li!= error.msg
+
 		else
-			p #[strong You need to log in first to view this!]
+			p #[strong You need to log in first to view this!] 
+				a(href="/") click here to go back.

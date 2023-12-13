@@ -126,6 +126,37 @@ exports.member_get = asyncHandler(async (req, res) => {
 	});
 });
 
-exports.member_post = asyncHandler(async (req, res) => {
-	res.send("Membership POST");
-});
+exports.member_post = [
+	check("membership")
+		.trim()
+		.isLength({ min: 1 })
+		.withMessage("Passcode is required")
+		.custom(async (value, { req }) => {
+			if (value !== process.env.MEMBER_CODE) {
+				throw new Error("Wrong Passcode");
+			}
+			if (req.user.member === true) {
+				throw new Error("Invalid request, You are already a member!");
+			}
+		}),
+
+	asyncHandler(async (req, res) => {
+		const errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			res.render("auth/membership", {
+				title: "Only Fams",
+				user: req.user,
+				errors: errors.array(),
+			});
+			return;
+		} else {
+			await User.findByIdAndUpdate(req.user._id, { member: true }, {});
+			res.render("auth/membership", {
+				title: "Only Fams",
+				user: req.user,
+				success_msg: "Congratulations you are now a member!",
+			});
+		}
+	}),
+];
