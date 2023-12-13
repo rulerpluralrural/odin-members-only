@@ -20,11 +20,10 @@ html(lang="en")
 						i.fa-solid.fa-magnifying-glass
 						input(type="search", placeholder="Search the community")
 					.navbar-nav
-
 						if (user)
 							.logout
 								a(href="/only-fams/logout") LOGOUT
-						else 
+						else
 							.login
 								a(href="/only-fams/login") LOGIN
 							.register
@@ -36,15 +35,11 @@ html(lang="en")
 					h1 General Discussion
 				p Create and login your account first to create a message, Join the membership by entering the secret passcode!.
 				.header-button-container
-					button(type="button").membership-btn
-						|
-						a(href="#") Join Membership
+					a.membership-btn(href="#") Join Membership
 
-					if(user)
-						button(type="button").message-btn
-							|
-							a(href="/only-fams/messages") Create a message
-						
+					if (user)
+						a.message-btn(href="/only-fams/messages") Create a message
+
 			.content-container
 				.sidebar
 					.sidebar-nav

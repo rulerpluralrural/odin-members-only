@@ -1,16 +1,55 @@
 extends layout
 block content
 	section
-		if (user)
-			each message in messages
-				.messages
+		.messages
+			if (user)
+				each message in messages
 					.message-card
 						.message-card-header
-							p #{ message.user.username } -
-							p #{ message.date_formatted }
-						.message-card-contents
-							p #{ message.title }
-							p - #{ message.message }
+							i.fa-regular.fa-message
+							h4 #{ message.title }
+						.message-card-content
+							p #{ message.message }
+							.message-card-details
+								if (user.member)
+									.details-posted-by
+										i.fa-regular.fa-pen-to-square
+										p Posted by:
+										|
+										small #{ message.user.username }
+									.details-posted-on
+										i.fa-solid.fa-share-from-square
+										p Posted on:
+										|
+										small #{ message.date_formatted }
+								else
+									.details-posted-by
+										i.fa-regular.fa-pen-to-square
+										p Posted by:
+											|
+											small.info Join Membership to see this
+									.details-posted-on
+										i.fa-solid.fa-share-from-square
+										p Posted on:
+											|
+											small.info Join Membership to see this
 
-		else
-			h1 Log in first!
+			else
+				each message in messages
+					.message-card
+						.message-card-header
+							i.fa-regular.fa-message
+							h4 #{ message.title }
+						.message-card-content
+							p #{ message.message }
+							.message-card-details
+								.details-posted-by
+									i.fa-regular.fa-pen-to-square
+									p Posted by:
+										|
+										small.info Join Membership to see this
+								.details-posted-on
+									i.fa-solid.fa-share-from-square
+									p Posted on:
+										|
+										small.info Join Membership to see this

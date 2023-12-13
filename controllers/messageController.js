@@ -8,8 +8,6 @@ exports.index = asyncHandler(async (req, res) => {
 		User.find().exec(),
 		Message.find().populate("user").exec(),
 	]);
-	
-	console.log(allMessages)
 
 	res.render("index", {
 		title: "Only Fams",

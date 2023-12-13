@@ -202,20 +202,17 @@ navbar .navbar-nav {
 	gap: 1rem;
 }
 
-.header-button-container button {
+.header-button-container a {
 	margin-top: 0.5rem;
 	transition: var(--transition-clr);
-	padding-block: 0.3rem;
-}
-
-.header-button-container button a {
+	padding: .3rem .5rem;
 	color: var(--light-200);
+	border-radius: .3rem;
 }
 
 .membership-btn {
 	margin-left: 3.5rem;
 	background-color: var(--red-200);
-	color: var(--light-200);
 }
 
 .membership-btn:hover {
@@ -396,6 +393,11 @@ form p {
 
 /* Messages styling */
 
+.messages {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
 .message-card {
 	display: flex;
 	flex-direction: column;
@@ -404,17 +406,68 @@ form p {
 }
 
 .message-card-header,
-.message-card-contents {
-	padding: 0.5rem 0.7rem;
+.message-card-content {
+	padding: 0.2rem 0.2rem;
 }
 
 .message-card-header {
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: .5rem;
 	background-color: var(--gray-200);
+	border-left: 4px solid var(--gray-400);
 }
 
-.message-card-contents {
+.message-card-header i {
+	font-size: 1.3rem;
+	border-radius: 50%;
+	border: 2px solid var(--dark-200);
+	padding: .5rem;
+}
 
+.message-card-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: .4rem;
+	padding-top: .7rem;
+	padding-left: .8rem;
+	border-left: 4px solid var(--gray-200);
+}
+
+.message-card-details {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: .6rem;
+	margin-bottom: .4rem;
+}
+
+.message-card-details i {
+	font-size: .9rem;
+}
+
+.details-posted-by,
+.details-posted-on {
+	display: flex;
+	align-items: center;
+	gap: .4rem;
+}
+
+.message-card-details p {
+	font-size: .85rem;
+	font-weight: 200;
+}
+
+.text-hidden {
+	display: none;
+	margin-left: .2rem;
+}
+
+.info {
+	background-color: var(--dark-200);
+	color: var(--light-100);
+	padding: .1rem .4rem;
+	border-radius: 3px;
+	margin-left: .2rem;
 }
