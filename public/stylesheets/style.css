@@ -491,6 +491,11 @@ form p {
 	margin-left: .2rem;
 }
 
+.message-form .errors-container {
+	width: 100%;
+	text-align: center;
+}
+
 /* Membership page styling */
 
 .auth-form {

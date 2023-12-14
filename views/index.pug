@@ -38,7 +38,6 @@ block content
 											|
 											small.info Join Membership to see this
 
-
 			else
 				each message in messages
 					.message-card
@@ -46,9 +45,9 @@ block content
 						.message-card-header
 							.heading
 								i.fa-regular.fa-message
-								h4 #{ message.title }
+								h4 !{ message.title }
 						.message-card-content
-							p #{ message.message }
+							p !{ message.message }
 							.message-card-details
 								.details-posted-by
 									i.fa-regular.fa-pen-to-square

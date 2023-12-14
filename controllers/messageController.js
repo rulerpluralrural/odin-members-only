@@ -34,12 +34,10 @@ exports.message_get = asyncHandler(async (req, res) => {
 exports.message_post = [
 	check("title")
 		.trim()
-		.escape()
 		.isLength({ min: 1 })
 		.withMessage("Title is required"),
 	check("message")
 		.trim()
-		.escape()
 		.isLength({ min: 1 })
 		.withMessage("Message is required"),
 
@@ -55,6 +53,7 @@ exports.message_post = [
 		if (!errors.isEmpty()) {
 			res.render("message/message_form", {
 				title: "Only Fams",
+				user: req.user,
 				errors: errors.array(),
 			});
 			return;

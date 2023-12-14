@@ -1,7 +1,7 @@
 extends ../layout
 block content
 	section
-		form(action="", method="POST") 
+		form.message-form(action="", method="POST") 
 			h1 Hello #{ user.username }!
 			.form-group
 				label(for="title") Title:
@@ -21,8 +21,8 @@ block content
 			button.form-control(type="submit")
 				p Submit
 				
-		if (errors)
-			.errors-container
-				each error in errors 
-					ul
-						li!= error
+			if (errors)
+				.errors-container
+					each error in errors 
+						ul
+							li!= error.msg
